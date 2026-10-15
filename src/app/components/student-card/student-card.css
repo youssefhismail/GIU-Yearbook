@@ -1,0 +1,71 @@
+/* =====================================================================
+   FILE: src/app/components/student-card/student-card.css
+   WHAT: Scoped styles for the student card component.
+   WHY:  Uses design tokens for consistent spacing, colors, typography,
+         and hover effects while keeping styles isolated from other pages.
+   ===================================================================== */
+
+/* Outer card link container */
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+/* Hover feedback: subtle lift and shadow */
+.card:hover {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Portrait photo: fills width, maintains fixed 310/246 aspect ratio without distortion */
+.card__photo {
+  width: 100%;
+  aspect-ratio: 310 / 246;
+  object-fit: cover;
+}
+
+/* Card textual body */
+.card__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-5);
+}
+
+/* Heading row: student name on left, arrow on right */
+.card__heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Student name typography */
+.card__name {
+  font: 600 19px/1.2 var(--font-sans);
+}
+
+/* Arrow icon: inherits color via currentColor in SVG */
+.card__arrow {
+  width: 18px;
+  height: 18px;
+  color: var(--color-red);
+}
+
+/* Metadata row (Faculty & Class Year) */
+.card__meta {
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+/* Personal quote typography */
+.card__quote {
+  font: italic 400 17px/1.4 var(--font-serif);
+}

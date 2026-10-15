@@ -1,0 +1,46 @@
+<!-- =====================================================================
+     FILE: src/app/components/student-card/student-card.html
+     WHAT: The HTML template for a single student card.
+     WHY:  Displays the portrait, name, faculty, graduation year, and quote.
+           Uses [routerLink] for client-side navigation and (error) to
+           switch to a placeholder image if the photo fails to load.
+     ===================================================================== -->
+<a
+  class="card"
+  [routerLink]="['/students', student().id]"
+  [attr.aria-label]="'Read the story of ' + student().name"
+>
+  <!-- Student portrait with lazy loading and fallback error handler -->
+  <img
+    class="card__photo"
+    [src]="photoSrc()"
+    [alt]="'Portrait of ' + student().name"
+    loading="lazy"
+    (error)="onImageError()"
+  />
+
+  <div class="card__body">
+    <!-- Header row: student name on the left, arrow icon on the right -->
+    <div class="card__heading">
+      <h3 class="card__name">{{ student().name }}</h3>
+      <svg
+        class="card__arrow"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.6"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M7 17 17 7M8 7h9v9" />
+      </svg>
+    </div>
+
+    <!-- Metadata: Faculty and Class Year -->
+    <p class="card__meta">{{ student().faculty }} · Class of {{ student().classYear }}</p>
+
+    <!-- Student's memorable quote inside typographic curly quotes -->
+    <p class="card__quote">“{{ student().quote }}”</p>
+  </div>
+</a>
